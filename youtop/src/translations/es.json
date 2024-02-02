@@ -1,6 +1,7 @@
 {
     "menu": {
-        "gender": "Genero"
+        "gender": "Genero",
+        "register": "Registrar"
     },
     "kung fu panda": "kung fu panda"
 }

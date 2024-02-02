@@ -50,7 +50,7 @@ function Menu() {
                             sx={{ textDecoration: 'none' }}
                         >
                             <Button sx={{ my: 2, color: 'white', display: 'block' }} >
-                                {t("menu.gender")}
+                                {t("menu.register")}
                             </Button>
                         </Typography>
                     </Box>
