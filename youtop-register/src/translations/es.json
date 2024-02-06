@@ -1,0 +1,11 @@
+{
+    "menu": {
+        "gender": "Genero",
+        "register": "Registrar",
+        "setting": "Ajustes"
+    },
+    "peliculas": {
+        "kungFuPanda": "kung fu panda",
+        "miVillanoFavorito": "Mi villano favorito"
+    }
+}
