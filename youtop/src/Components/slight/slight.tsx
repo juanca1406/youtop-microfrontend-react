@@ -5,13 +5,32 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useTranslation } from 'react-i18next';
+import Tooltip from '@mui/material/Tooltip';
+import React from 'react';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+import SettingsIcon from '@mui/icons-material/Settings';
 
-
-function Menu() {
+function MyMenu() {  // Cambiado el nombre de Menu a MyMenu
     const { t } = useTranslation();
+    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+    const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
+    const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorElNav(event.currentTarget);
+    };
+    const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorElUser(event.currentTarget);
+    };
+
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null);
+    };
+
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
@@ -44,9 +63,10 @@ function Menu() {
                                 {t("menu.gender")}
                             </Button>
                         </Typography>
+
                         <Typography
                             component={Link}
-                            to="gender"
+                            to="register"
                             sx={{ textDecoration: 'none' }}
                         >
                             <Button sx={{ my: 2, color: 'white', display: 'block' }} >
@@ -55,20 +75,43 @@ function Menu() {
                         </Typography>
                     </Box>
 
-                    <Box >
-                        <Button
-                            component={Link}
-                            to="/Carrito"
-                            sx={{ color: 'inherit' }}
+                    {/* setting */}
+                    <Box sx={{ flexGrow: 0 }}>
+                        <Tooltip title="Open settings">
+                            <Button sx={{ color: 'inherit' }} onClick={handleOpenUserMenu} >
+                                <SettingsIcon sx={{ fontSize: 30 }} />
+                            </Button>
+                        </Tooltip>
+                        <Menu
+                            sx={{ mt: '45px' }}
+                            id="menu-appbar"
+                            anchorEl={anchorElUser}
+                            anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            open={Boolean(anchorElUser)}
+                            onClose={handleCloseUserMenu}
                         >
-                            <ShoppingCartIcon sx={{ fontSize: 30 }} />
-                            1
-                        </Button>
+                            <MenuItem onClick={handleCloseUserMenu}>
+                                <Typography
+                                    sx={{ textDecoration: 'none' }}
+                                    textAlign="center"
+                                    component={Link}
+                                    to="/"
+                                >{t('menu.setting')}</Typography>
+                            </MenuItem>
+                        </Menu>
                     </Box>
                 </Toolbar>
             </Container>
-
-        </AppBar >
+        </AppBar>
     );
 }
-export default Menu;
+
+export default MyMenu;  // Cambiado el nombre de la exportación a MyMenu

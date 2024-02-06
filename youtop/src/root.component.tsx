@@ -7,6 +7,9 @@ import { I18nextProvider } from "react-i18next";
 import i18n from "i18next";
 import es from "./translations/es.json";
 import { useTranslation } from "react-i18next";
+import imagen from './img/img.js';
+import { useEffect } from 'react';
+import axios, { AxiosResponse } from 'axios';
 
 i18n.init({
   interpolation: { escapeValue: false },
@@ -26,9 +29,21 @@ function RootTranslation() {
     <Grid container spacing={2}>
       <Grid item xs={6} sm={5} xl={2}>
         <Scenery
-          titulo={t("kung fu panda")}
+          image={imagen.kunFuPanda}
+          titulo={t("peliculas.kungFuPanda")}
           title='kung fu panda'
+          descripcion='el panda Po, un panda que come fideos, es fanático del kung fu e idolatra a los Cinco Furiosos: Mantis, Mono, Víbora, Grulla y Tigresa, un grupo de maestros de kung fu entrenados por el Maestro Shifu'
         />
+
+      </Grid>
+      <Grid item xs={6} sm={5} xl={2}>
+        <Scenery
+          image={imagen.miVillanoFavorito}
+          titulo={t("peliculas.miVillanoFavorito")}
+          title='kung fu panda'
+          descripcion='Gru es un malo que disfruta haciendo maldades a los demás. Desde congelar la cola de clientes en una hamburguesería, hasta crear un globo en forma de animal y dárselo a un niño sólo para tener el placer de hacerlo explotar'
+        />
+
       </Grid>
     </Grid>
   );
